@@ -1,0 +1,304 @@
+<!--Main layout-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <ul class="navbar-nav flex-row mr-lg-0 col-xs-12 acount-details">
+        <li class="nav-item">
+          <a class="nav-link pr-2">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            +97317555666
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link pr-2">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            {{"common.address"|translate}}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link pr-2" (click)="showLogin()">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            {{"common.login"|translate}}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link pr-2" (click)="showRegistration()">
+            | {{"common.signup"|translate}}
+          </a>
+        </li>
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbRippleRadius type="button" class="nav-link dropdown-toggle waves-light" mdbRippleRadius>
+            <i class="fa fa-user" aria-hidden="true"></i> &nbsp;{{"common.myAccount"|translate}}
+            <span class="caret"></span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbRippleRadius routerLink="/myaccount">{{"common.myAccount"|translate}}
+            </a>
+            <hr />
+            <a class="dropdown-item waves-light" mdbRippleRadius routerLink="/mycart">{{"common.myCart"|translate}}
+              <span>{{"common.items" | translate}}: 07</span>
+            </a>
+            <hr />
+            <a class="dropdown-item waves-light" mdbRippleRadius routerLink="/myorders">{{"common.myOrder"|translate}}</a>
+            <hr />
+            <a class="dropdown-item waves-light" mdbRippleRadius routerLink="/wishlistAccount">{{"common.wishlist"|translate}}
+              <span>{{"common.items" | translate}}: 13 </span>
+            </a>
+            <hr />
+            <a class="dropdown-item waves-light" mdbRippleRadius routerLink="/notifications">{{"common.notifications"|translate}}
+              <span class="notif">4 </span>
+            </a>
+            <hr />
+            <a class="dropdown-item waves-light" mdbRippleRadius href="#">{{"common.logout"|translate}}</a>
+
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark ">
+  <a class="navbar-brand logo" href="#">
+    <img src="assets/images/logo.png" class="img-fluid" alt="Responsive image">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="form-group row">
+      <!-- Material input -->
+
+      <div class="col-sm-10 search-bar">
+        <div class="md-form mt-0">
+          <input type="text" class="form-control search-input" id="inputPassword3MD" placeholder="&nbsp;&nbsp;Search For Products">
+        </div>
+      </div>
+      <label for="inputPassword3MD" class="col-sm-2 col-form-label">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </label>
+    </div>
+  </div>
+
+  <div class="cart">
+    <span class="crtt-items" (click)="showCartItems()">
+      <a>
+        <i class="fa fa-shopping-cart" aria-hidden="true">
+        </i>
+        <span class="items">2</span>
+      </a>
+    </span>
+    <div class="cat-drop cart-details" role="menu" *ngIf="showCartDetail">
+
+      <div class="row cart-items">
+        <div class="col-md-12">
+          <span class="delete">x</span>
+        </div>
+        <div class="col-md-3">
+          <img src="assets/images/pinapple.png" (click)="showProduxtDetails()" height="80px" width="80px">
+        </div>
+        <div class="col-md-3">
+          <h6>Pinapple</h6>
+          <p class="text-center">1 piece</p>
+        </div>
+        <div class="col-md-3" style="display: inline;">
+          <button class="btn btn-icon btn-maroon btn-minus" (click)="itemDecrease()">
+            <span>-</span>
+          </button>
+          <input type="text" value="{{item.quantity}}" [(ngModel)]="item.quantity" disabled>
+          <button class="btn btn-icon btn-maroon btn-plus" (click)="itemIncrease()">
+            <span>+</span>
+          </button>
+        </div>
+        <div class="col-md-3 price">
+          <h6>Price :
+            <span>$ 7.500</span>
+          </h6>
+          <p class="text-center">Save :
+            <span>$2</span>
+          </p>
+        </div>
+      </div>
+      <div class="row cart-items">
+        <div class="col-md-12">
+          <span class="delete">x</span>
+        </div>
+        <div class="col-md-3">
+          <img src="assets/images/cherry.png" (click)="showProduxtDetails()" height="80px" width="80px">
+        </div>
+        <div class="col-md-3">
+          <h6>Cherry Fruit</h6>
+          <p class="text-center">500gms</p>
+        </div>
+        <div class="col-md-3" style="display: inline;">
+          <button class="btn btn-icon btn-maroon btn-minus">
+            <span>-</span>
+          </button>
+          <input type="text" value="1" disabled>
+          <button class="btn btn-icon btn-maroon btn-plus">
+            <span>+</span>
+          </button>
+        </div>
+        <div class="col-md-3 price">
+          <h6>Price :
+            <span>$ 7.500</span>
+          </h6>
+          <p class="text-center">Save :
+            <span>$2</span>
+          </p>
+        </div>
+      </div>
+      <br />
+      <div class="row total">
+        <div class="col-md-4">
+          <p>Sub Total</p>
+        </div>
+        <div class="col-md-8">
+          <p style="float:right;">$15.000</p>
+        </div>
+        <div class="col-md-4">
+          <span>*Delivery Charges will be added at checkout</span>
+        </div>
+        <div class="col-md-8">
+          <button class="btn btn-marron" routerLink="/Mycart">
+            View Cart & Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+    <span class="cost">BD2.170.00</span>
+    <span class="category dropdown" dropdown>
+      <a dropdownToggle mdbRippleRadius>
+        <i class="fa fa-navicon" aria-hidden="true"></i>
+      </a>
+      <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary cat-drop" role="menu">
+        <h5 class="text-center">Categories</h5>
+        <ul>
+          <li>
+            <i class="fa fa-caret-left" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
+            <a (mouseenter)="showSubCat()">Vegetables</a>
+            <div class="subcatcat" *ngIf="showSubCats">
+              <div class="subcatsCat row">
+                <div class="col-md-6">
+                  <ul>
+                    <h6>ladies finger</h6>
+                    <li>
+                      <a>Brinjal</a>
+                    </li>
+                    <li>
+                      <a>Tomato</a>
+                    </li>
+                    <li>
+                      <a>cauliflower</a>
+                    </li>
+                    <li>
+                      <a>Onions</a>
+                    </li>
+                    <li>
+                      <a>carrot</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul>
+                    <h6>Fruits</h6>
+                    <li>
+                      <a>Mangoes</a>
+                    </li>
+                    <li>
+                      <a>Jack Fruit</a>
+                    </li>
+                    <li>
+                      <a>Apple</a>
+                    </li>
+                    <li>
+                      <a>Banana</a>
+                    </li>
+                    <li>
+                      <a>Cherry</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul>
+                    <h6>ladies finger</h6>
+                    <li>
+                      <a>Brinjal</a>
+                    </li>
+                    <li>
+                      <a>Tomato</a>
+                    </li>
+                    <li>
+                      <a>cauliflower</a>
+                    </li>
+                    <li>
+                      <a>Onions</a>
+                    </li>
+                    <li>
+                      <a>carrot</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-caret-left" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
+            <a href>Kitchen</a>
+          </li>
+          <li>
+            <i class="fa fa-caret-left" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
+            <a href>Washing</a>
+          </li>
+          <li>
+            <i class="fa fa-caret-left" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
+            <a href>Beverages</a>
+          </li>
+          <li>
+            <i class="fa fa-caret-left" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
+            <a href>Baby Care</a>
+          </li>
+          <li>
+            <i class="fa fa-caret-left" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
+            <a href>Cleaning & Household</a>
+          </li>
+          <li>
+            <i class="fa fa-caret-left" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
+            <a href>Beauty and Health</a>
+          </li>
+          <li>
+            <i class="fa fa-caret-left" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
+            <a href>Bakery cakes & masala</a>
+          </li>
+        </ul>
+
+
+
+      </div>
+
+    </span>
+
+  </div>
+
+
+
+
+</nav>
+
+
+<script>
+  // Material Select Initialization
+  $(document).ready(function () {
+    $('.mdb-select').material_select();
+  });
+
+</script>
