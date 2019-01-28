@@ -25,13 +25,13 @@ export class HomeComponent implements OnInit {
   showBreadScreen = false;
   showJuiceScreen = false;
   showAllProducts() {
-    this.showAllProductsScreen = true;
-    this.showVegetablesScreen = false;
+    this.showAllProductsScreen = false;
+    this.showVegetablesScreen = true;
     this.showFruitScreen = false;
     this.showTeaScreen = false;
     this.showBreadScreen = false;
     this.showJuiceScreen = false;
-    this.allProductsData();
+    this.VegetablesData();
   }
   showVegetables() {
     this.showVegetablesScreen = true;
