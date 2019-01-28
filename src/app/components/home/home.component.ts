@@ -24,15 +24,15 @@ export class HomeComponent implements OnInit {
   showTeaScreen = false;
   showBreadScreen = false;
   showJuiceScreen = false;
-  // showAllProducts() {
-  //   this.showAllProductsScreen = true;
-  //   this.showVegetablesScreen = false;
-  //   this.showFruitScreen = false;
-  //   this.showTeaScreen = false;
-  //   this.showBreadScreen = false;
-  //   this.showJuiceScreen = false;
-  //   this.allProductsData();
-  // }
+  showAllProducts() {
+    this.showAllProductsScreen = true;
+    this.showVegetablesScreen = false;
+    this.showFruitScreen = false;
+    this.showTeaScreen = false;
+    this.showBreadScreen = false;
+    this.showJuiceScreen = false;
+    this.allProductsData();
+  }
   showVegetables() {
     this.showVegetablesScreen = true;
     this.showAllProductsScreen = false;
@@ -83,6 +83,7 @@ export class HomeComponent implements OnInit {
     this.productService.product = this.product;
     this.getBanners();
     this.getBrands();
+    this.allProductsData();
   }
   starList: boolean[] = [true, true, true, true, true];       // create a list which contains status of 5 stars
   rating: number;

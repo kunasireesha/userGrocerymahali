@@ -20,13 +20,16 @@
                                 <h6>{{data.prodName}}</h6>
                                 <div class="sort">
                                     <select>
-                                        <option [value]="data.products.skid">{{data.products.skuValue}}- RS {{data.products.selling_price}}
+                                        <option [value]="data.products.skid">{{data.products.skuValue}}- RS
+                                            {{data.products.selling_price}}
                                         </option>
                                     </select>
                                 </div>
                                 <div class="custom-control custom-radio mahali-radio">
-                                    <input type="radio" id="customRadio3" name="customRadio3" class="custom-control-input mahali-input" checked>
-                                    <label data-toggle="modal" data-target="#myModal" class="custom-control-label mahali-label" for="customRadio3">Use
+                                    <input type="radio" id="customRadio3" name="customRadio3" class="custom-control-input mahali-input"
+                                        checked>
+                                    <label data-toggle="modal" data-target="#myModal" class="custom-control-label mahali-label"
+                                        for="customRadio3">Use
                                         Promocode to get 20% Cashback</label>
                                 </div>
                             </div>
@@ -37,7 +40,8 @@
                                             <i class="fa fa-minus" aria-hidden="true"></i>
                                         </span>
                                     </button>
-                                    <input type="text" value="1" name="quantity" [(ngModel)]="data.quantity" readonly="readonly" value="{{data.quantity}}" disabled>
+                                    <input type="text" value="1" name="quantity" [(ngModel)]="data.quantity" readonly="readonly"
+                                        value="{{data.quantity}}" disabled>
                                     <button class="btn btn-icon btn-maroon btn-plus" (click)="itemIncrease(data.cart_id)">
                                         <span>
                                             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -50,14 +54,14 @@
                             </div>
 
                             <div class="col-md-6 price">
-                                <h6>Price : ${{data.products.selling_price}}
+                                <h6>Price : BD {{data.products.selling_price}}
                                     <span>
-                                        <strike>${{data.products.actual_price}}</strike>
+                                        <strike>BD {{data.products.actual_price}}</strike>
                                     </span>
                                 </h6>
                             </div>
                             <div class="col-md-6 price">
-                                <h6>Total : ${{data.products.selling_price}}</h6>
+                                <h6>Total : BD {{data.products.selling_price}}</h6>
                             </div>
                             <br>
                             <br>
@@ -173,7 +177,7 @@
                                 <tr>
 
                                     <td>Sub-Total</td>
-                                    <td> : ${{billing}}</td>
+                                    <td> : BD {{billing}}</td>
                                 </tr>
                                 <tr>
                                     <td>Delivery charges </td>
@@ -208,7 +212,8 @@
                                 <h1>{{data.voucher_code}}</h1>
                             </div>
                             <div class="col-lg-8">
-                                <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
+                                    an
                                     unknown printer took
                                 </p>
                                 <div class="row">
@@ -307,7 +312,8 @@
                                         <span>:</span>
                                     </label>
                                     <div class="col-sm-8 col-md-8 ">
-                                        <input type="text " formControlName="mobile_number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
+                                        <input type="text " formControlName="mobile_number" class="form-control"
+                                            [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
                                         <div *ngIf="submitted && f.mobile_number.errors" class="invalid-feedback">
                                             <div *ngIf="f.mobile_number.errors.required">Mobile Number is required</div>
                                         </div>
@@ -390,7 +396,8 @@
                                     </p>
                                     <div class="custom-control custom-checkbox ">
                                         <input type="checkbox " class="custom-control-input " id="defaultUnchecked5 ">
-                                        <label class="custom-control-label " for="defaultUnchecked5 ">Set this as my default
+                                        <label class="custom-control-label " for="defaultUnchecked5 ">Set this as my
+                                            default
                                             address
                                         </label>
                                     </div>
@@ -424,7 +431,8 @@
                                 <div class="row justify-content-center">
                                     <div class="col-md-8">
                                         <select (change)="changeSlot($event.target.value)">
-                                            <option *ngFor="let slot of delSlots" [value]="slot.id">{{slot.start_time}} -
+                                            <option *ngFor="let slot of delSlots" [value]="slot.id">{{slot.start_time}}
+                                                -
                                                 {{slot.end_time}}
                                             </option>
                                         </select>
@@ -444,7 +452,8 @@
                                 <p>Ph : {{selAdd.mobile_number}}</p>
                                 <p>
                                     <p>
-                                        <a (click)="showItems()">{{slotData.cart_count}} Items</a>@ BD {{slotData.bill}}
+                                        <a (click)="showItems()">{{slotData.cart_count}} Items</a>@ BD
+                                        {{slotData.bill}}
                                     </p>
                                     <p>Delivery Charge: BD ***
                                         <img src="assets/images/!.png">
@@ -453,7 +462,8 @@
                                         <div class="col-md-8">
                                             <select>
                                                 <!-- <option>With in next 10minutes</option> -->
-                                                <option *ngFor="let slot of delSlots">{{slot.start_time}} - {{slot.end_time}}
+                                                <option *ngFor="let slot of delSlots">{{slot.start_time}} -
+                                                    {{slot.end_time}}
                                                 </option>
                                                 <!-- <option>3:00 PM - 4:00 PM</option>
 												<option>4:00 PM - 5:00 PM</option>

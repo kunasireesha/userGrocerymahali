@@ -205,22 +205,22 @@ export class ProductsComponent implements OnInit {
       }
     })
   }
-  subCatData = [];
-  subId;
-  // showSubCat(Id) {
-  //   this.subId = Id;
-  //   this.subCatData=[];
-  //   this.showSubCats = true;
-  //   for(var i=0;i<this.category.length;i++){
-  //   for(var j=0;j<this.category[i].subcategory.length;j++){
-  //       if(Id===this.category[i].subcategory[j].category_id){
-  //         this.subCatData.push(this.category[i].subcategory[j]);
-  //         console.log(this.subCatData);
+  subCategory = [];
+  showsubCat(index, id) {
+    this.subCategory = [];
+    this.selectedCat = index;
+    this.showCategories = true;
 
-  //       }
-  //   }
-  // }
-  // }
+    for (var i = 0; i < this.subCatData.length; i++) {
+      if (id === this.subCatData[i].category_id) {
+        this.subCategory.push(this.subCatData[i]);
+      }
+    }
+  }
+  closesubSubCat() {
+    this.showCategories = false;
+    // this.showSubCategories = false;
+  }
   selectedCat = false;
   openSub(index) {
     this.selectedCat !== this.selectedCat;

@@ -27,11 +27,6 @@ export const AppSettings = {
     orderSummary: baseUrl + "place_order/order_summary",
     productByCatId: baseUrl + "products/category",
     productBySubCatId: baseUrl + "products/sub_category_id",
-    businessDetails: baseUrl + "vendors/update_profile",
-    taxDetails: baseUrl + "vendors/update_profile",
-    bankDetails: baseUrl + "vendors/update_profile",
-    getAccDetails: baseUrl + "vendors/account_details",
-    updateAcc: baseUrl + "vendors/update_profile",
     searchProducts: baseUrl + 'products/search',
     wholeProducts: baseUrl + "/products/wholesaler_products",
     ordById: baseUrl + "place_order/order_products",
@@ -57,6 +52,6 @@ export const AppSettings = {
     getTea: baseUrl + "products/tea",
     getBread: baseUrl + "products/bread",
     getJuice: baseUrl + "products/juice",
-    getBeaty:baseUrl+"products/users/beauty_products",
-    modifyWish:baseUrl+"wish_list"
+    getBeaty: baseUrl + "products/users/beauty_products",
+    modifyWish: baseUrl + "wish_list",
 }

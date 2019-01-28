@@ -133,31 +133,6 @@ export class appService {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.get(AppSettings.productBySubCatId + "/" + params, { headers: headers });
     }
-    businessDetails(params) {
-        this.vendor_id = localStorage.userId;
-        const headers = new Headers({ 'Content-Type': "application/JSON" });
-        return this.http.put(AppSettings.businessDetails + "/" + this.vendor_id, params, { headers: headers });
-    }
-    taxDetails(params) {
-        this.vendor_id = localStorage.userId;
-        const headers = new Headers({ 'Content-Type': "application/JSON" });
-        return this.http.put(AppSettings.taxDetails + "/" + this.vendor_id, params, { headers: headers });
-    }
-    bankDetails(parmas) {
-        this.vendor_id = localStorage.userId;
-        const headers = new Headers({ 'Content-Type': "application/JSON" });
-        return this.http.put(AppSettings.bankDetails + "/" + this.vendor_id, parmas, { headers: headers });
-    }
-    getAccDetails() {
-        this.vendor_id = localStorage.userId;
-        const headers = new Headers({ 'Content-Type': "application/JSON" });
-        return this.http.get(AppSettings.getAccDetails + "/" + this.vendor_id, { headers: headers });
-    }
-    updateAcc(params) {
-        this.vendor_id = localStorage.userId;
-        const headers = new Headers({ 'Content-Type': "application/JSON" });
-        return this.http.put(AppSettings.updateAcc + "/" + this.vendor_id, params, { headers: headers });
-    }
     searchProducts(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.get(AppSettings.searchProducts + "/" + params, { headers: headers });
@@ -270,6 +245,6 @@ export class appService {
     modifyWish(params, cartId) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.user_id = localStorage.userId
-        return this.http.put(AppSettings.modifyWish +"/"+this.user_id +'/' + cartId, params, { headers: headers });
+        return this.http.put(AppSettings.modifyWish + "/" + this.user_id + '/' + cartId, params, { headers: headers });
     }
 }

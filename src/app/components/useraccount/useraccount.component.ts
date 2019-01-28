@@ -220,17 +220,17 @@ export class UseraccountComponent implements OnInit {
   orderDet = [];
   count;
   ordDetails(ordId) {
-      this.ordId = ordId;
-      this.appService.orderById(ordId).subscribe(resp => {
-          this.ordData = resp.json().Order.products;
-          for (var i = 0; i < this.ordData.length; i++) {
-              this.ordData[i].size = this.ordData[i].sku_details[0].size;
-              this.ordData[i].selling_price = this.ordData[i].sku_details[0].selling_price;
-          }
-          this.orderDet = resp.json().Order.details[0];
-          this.count = resp.json().Order.total_selling_price;
+    this.ordId = ordId;
+    this.appService.orderById(ordId).subscribe(resp => {
+      this.ordData = resp.json().Order.products;
+      for (var i = 0; i < this.ordData.length; i++) {
+        this.ordData[i].size = this.ordData[i].sku_details[0].size;
+        this.ordData[i].selling_price = this.ordData[i].sku_details[0].selling_price;
+      }
+      this.orderDet = resp.json().Order.details[0];
+      this.count = resp.json().Order.total_selling_price;
 
-      })
+    })
   }
   offerZone() {
     this.showNotifications = false;
@@ -527,31 +527,31 @@ export class UseraccountComponent implements OnInit {
   }
   itemIncrease(wishId) {
     for (var i = 0; i < this.wishData.length; i++) {
-        if (this.wishData[i].wishlist_id === wishId) {
-            this.wishData[i].quantity = this.wishData[i].quantity + 1;
-            this.modifyWish(this.wishData[i].quantity, wishId);
-            this.getWish();
-            return;
-        }
+      if (this.wishData[i].wishlist_id === wishId) {
+        this.wishData[i].quantity = this.wishData[i].quantity + 1;
+        this.modifyWish(this.wishData[i].quantity, wishId);
+        this.getWish();
+        return;
+      }
     }
-}
+  }
 
-itemDecrease(wishId) {
+  itemDecrease(wishId) {
     for (var i = 0; i < this.wishData.length; i++) {
-        if (this.wishData[i].wishlist_id === wishId) {
-            if (this.wishData[i].quantity === 1) {
-              this.delWish(wishId);
-                return;
-            } else {
-                this.wishData[i].quantity = this.wishData[i].quantity - 1;
-                this.modifyWish(this.wishData[i].quantity, wishId);
-            }
-            this.getWish();
-            return;
+      if (this.wishData[i].wishlist_id === wishId) {
+        if (this.wishData[i].quantity === 1) {
+          this.delWish(wishId);
+          return;
+        } else {
+          this.wishData[i].quantity = this.wishData[i].quantity - 1;
+          this.modifyWish(this.wishData[i].quantity, wishId);
+          this.getWish();
         }
+        return;
+      }
     }
 
-}
+  }
   vegArr = [];
   vegetablesData = [];
   VegetablesData() {
@@ -608,22 +608,23 @@ itemDecrease(wishId) {
   }
   modifyWish(quantity, wishId) {
     var params = {
-        "quantity": quantity
+      "quantity": quantity
     }
 
     this.appService.modifyWish(params, wishId).subscribe(resp => {
-        if (resp.json().status === 200) {
-            swal(resp.json().message, "", "success");
-            // jQuery("#signupmodal").modal("hide");
-            // this.showRegistration = false;
-            // localStorage.setItem('userId', (resp.json().reg_id));
-            // this.myAccount = true
-            // this.showOpacity = false;
-            // this.onCloseCancel();
-            // this.router.navigate(['/address']);
-        }
+      if (resp.json().status === 200) {
+        swal(resp.json().message, "", "success");
+        this.getWish();
+        // jQuery("#signupmodal").modal("hide");
+        // this.showRegistration = false;
+        // localStorage.setItem('userId', (resp.json().reg_id));
+        // this.myAccount = true
+        // this.showOpacity = false;
+        // this.onCloseCancel();
+        // this.router.navigate(['/address']);
+      }
     }, err => {
 
     })
-}
+  }
 }
