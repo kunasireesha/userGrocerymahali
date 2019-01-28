@@ -156,7 +156,7 @@ export class HeaderComponent implements OnInit {
             if (this.cartData[i].cart_id === cartId) {
                 this.cartData[i].quantity = this.cartData[i].quantity + 1;
                 this.modifyCart(this.cartData[i].quantity, cartId);
-                this.getCart();
+                // this.getCart();
                 return;
             }
         }
@@ -172,7 +172,7 @@ export class HeaderComponent implements OnInit {
                     this.cartData[i].quantity = this.cartData[i].quantity - 1;
                     this.modifyCart(this.cartData[i].quantity, cartId);
                 }
-                this.getCart();
+                // this.getCart();
                 return;
             }
         }
@@ -188,8 +188,9 @@ export class HeaderComponent implements OnInit {
 
         this.appService.modifyCart(params, cartId).subscribe(resp => {
             if (resp.json().status === 200) {
-                swal(resp.json().message, "", "success");
+                // swal(resp.json().message, "", "success");
                 jQuery("#signupmodal").modal("hide");
+                this.getCart();
                 // this.showRegistration = false;
                 // localStorage.setItem('userId', (resp.json().reg_id));
                 // this.myAccount = true
