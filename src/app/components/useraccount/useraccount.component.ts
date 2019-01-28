@@ -52,6 +52,7 @@ export class UseraccountComponent implements OnInit {
   typeval = {}
   ngOnInit() {
     this.getAdd();
+    this.getProfile();
     this.addressForm = this.formBuilder.group({
       // address_type:this.typeval,
       full_name: [''],
@@ -479,6 +480,10 @@ export class UseraccountComponent implements OnInit {
     this.showProfile = true;
     this.editUserProfile = false;
     this.getProfile();
+  }
+  cancelChange() {
+    this.showProfile = true;
+    this.showChangePassword = false;
   }
   Type(type) {
     this.typeval = type;

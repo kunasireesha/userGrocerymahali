@@ -16,6 +16,7 @@ export class ProductsComponent implements OnInit {
   wholeProd = false;
   showSubCats = false;
   noData;
+  subCatData = [];
   constructor(private router: Router, public productService: ProductService, private appService: appService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       if (params.action === "whole") {
@@ -229,6 +230,7 @@ export class ProductsComponent implements OnInit {
 
   skuArr = [];
   prodData = [];
+  subId;
   getSubProducts(subid) {
     this.skuData = [];
     this.subId = (subid === '') ? this.subId : subid;
