@@ -190,6 +190,8 @@ export class HeaderComponent implements OnInit {
             if (resp.json().status === 200) {
                 // swal(resp.json().message, "", "success");
                 jQuery("#signupmodal").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
                 this.getCart();
                 // this.showRegistration = false;
                 // localStorage.setItem('userId', (resp.json().reg_id));
@@ -248,6 +250,8 @@ export class HeaderComponent implements OnInit {
             if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
                 jQuery("#signupmodal").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
                 // this.showRegistration = false;
                 localStorage.setItem('userId', (resp.json().reg_id));
                 // this.myAccount = true
@@ -273,6 +277,8 @@ export class HeaderComponent implements OnInit {
                 swal(resp.json().message, "", "success");
                 localStorage.setItem('token', JSON.stringify(resp.json().token));
                 jQuery("#loginmodal").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
                 this.showRegistration = false;
                 this.showLoginScreen = false;
                 this.myAccount = true;
@@ -335,6 +341,8 @@ export class HeaderComponent implements OnInit {
         this.appService.forgotPassword(inData).subscribe(resp => {
             if (resp.json().status === 200) {
                 jQuery("#forgotpass").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
                 swal(resp.json().message, "", "success");
             } else {
                 swal(resp.json().message, "", "error");
