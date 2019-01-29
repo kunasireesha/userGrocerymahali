@@ -178,12 +178,13 @@
             <ul class="expand-button2 expand-button-2">
               <li><a (click)="addtoWish(item.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
             </ul>
-            <div *ngIf="!skuData">
-              No data
-            </div>
+
           </div>
 
         </div>
+      </div>
+      <div *ngIf="noData">
+        No data
       </div>
     </div>
   </div>
