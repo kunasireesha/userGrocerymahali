@@ -128,8 +128,28 @@ export class ProductdetailsComponent implements OnInit {
       "item_type": "grocery"
     }
     this.appService.addtoCart(inData).subscribe(res => {
-      this.getCart();
+      if (res.json().status === 400) {
+        swal(res.json().message, "", "error");
+      } else {
+        this.getCart();
+        swal(res.json().message, "", "success");
+      }
+
+    }, err => {
+
+    })
+  }
+  addtoWish() {
+    var inData = {
+      "user_id": JSON.parse(localStorage.userId),
+      "product_id": this.prodId,
+      "sku_id": this.skid,
+      "item_type": "grocery"
+    }
+    this.appService.addToWish(inData).subscribe(res => {
+      console.log(res.json());
       swal(res.json().message, "", "success");
+      // this.getWish();
     }, err => {
 
     })

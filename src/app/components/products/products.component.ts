@@ -33,11 +33,15 @@ export class ProductsComponent implements OnInit {
         this.serProd = true;
       } else if (params.action === "category") {
         this.catId = params.catId;
+        this.catName = params.catName;
+        alert(this.catName);
         this.getCatProducts('');
         this.wholeProd = false;
         this.serProd = true;
       } else if (params.action === 'subCategory') {
         this.getSubProducts('');
+        this.catName = params.catName;
+        this.subCat = params.subCat;
         this.wholeProd = false;
         this.serProd = true;
         this.subId = params.subId;
@@ -139,10 +143,15 @@ export class ProductsComponent implements OnInit {
       "item_type": "grocery"
     }
     this.appService.addtoCart(inData).subscribe(res => {
-      this.cartDetails = res.json().selling_price_total;
-      this.cartCount = res.json().count;
-      this.getCart();
-      swal(res.json().message, "", "success");
+      if (res.json().status === 400) {
+        swal(res.json().message, "", "error");
+      } else {
+        this.cartDetails = res.json().selling_price_total;
+        this.cartCount = res.json().count;
+        this.getCart();
+        swal(res.json().message, "", "success");
+      }
+
     }, err => {
 
     })

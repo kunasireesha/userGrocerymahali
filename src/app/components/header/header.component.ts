@@ -213,20 +213,34 @@ export class HeaderComponent implements OnInit {
     showAddress() {
         this.router.navigate(['/address'], { queryParams: { order: 'popular' } });
     }
-    showProbyCat(catId, action, catName, index) {
+    subCatData = [];
+    subId;
+    showSubCat(Id) {
+        this.subId = Id;
+        this.subCatData = [];
+        this.showSubCats = true;
+        for (var i = 0; i < this.category.length; i++) {
+            for (var j = 0; j < this.category[i].subcategory.length; j++) {
+                if (Id === this.category[i].subcategory[j].category_id) {
+                    this.category[i].subcategory[j].cat_name = this.category[i].category_name;
+                    this.subCatData.push(this.category[i].subcategory[j]);
+                }
+            }
+        }
+    }
+    showProbyCat(catId, action, catName) {
         this.showSubCats = false;
-        this.showCategories = false;
-        this.showOpacity = false;
-        this.selectedCat = index;
+        jQuery("#itemdesc").modal("hide");
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
         this.router.navigate(['/products'], { queryParams: { catId: catId, action: action, catName: catName } });
-        $("#itemdesc").modal("hide");
     }
     showProbySubCat(SubCatId, action, catName, subCat) {
         this.showSubCats = false;
-        this.showCategories = false;
-        this.showOpacity = false;
+        jQuery("#itemdesc").modal("hide");
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
         this.router.navigate(['/products'], { queryParams: { subId: SubCatId, action: action, catName: catName, subCat: subCat } });
-        $("#itemdesc").modal("hide");
     }
     signOut() {
         localStorage.removeItem('token');
@@ -307,24 +321,7 @@ export class HeaderComponent implements OnInit {
             // this.showSubCat(this.subId);
         })
     }
-    subCatData = [];
-    subId;
-    selectedCat;
-    showSubCat(Id, index) {
-        this.subId = Id;
-        this.selectedCat = index;
-        this.subCatData = [];
-        this.showSubCats = true;
-        for (var i = 0; i < this.category.length; i++) {
-            for (var j = 0; j < this.category[i].subcategory.length; j++) {
-                if (Id === this.category[i].subcategory[j].category_id) {
-                    this.category[i].subcategory[j].cat_name = this.category[i].category_name;
-                    this.subCatData.push(this.category[i].subcategory[j]);
-                }
-            }
-        }
-        console.log(this.subCatData);
-    }
+
     getProduct() {
 
     }

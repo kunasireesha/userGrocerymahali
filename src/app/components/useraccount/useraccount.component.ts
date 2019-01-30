@@ -513,10 +513,15 @@ export class UseraccountComponent implements OnInit {
       "item_type": "grocery"
     }
     this.appService.addtoCart(inData).subscribe(res => {
-      this.cartDetails = res.json().selling_price_total;
-      this.cartCount = res.json().count;
-      this.getCart();
-      swal(res.json().message, "", "success");
+      if (res.json().status === 400) {
+        swal(res.json().message, "", "error");
+      } else {
+        this.cartDetails = res.json().selling_price_total;
+        this.cartCount = res.json().count;
+        this.getCart();
+        swal(res.json().message, "", "success");
+      }
+
     }, err => {
 
     })

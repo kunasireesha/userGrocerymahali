@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class MysavedlistComponent implements OnInit {
 
-  constructor(public appService: appService,private route: ActivatedRoute,private router: Router) { }
+  constructor(public appService: appService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.getCategories();
@@ -59,10 +59,15 @@ export class MysavedlistComponent implements OnInit {
       "item_type": "grocery"
     }
     this.appService.addtoCart(inData).subscribe(res => {
-      this.cartDetails = res.json().selling_price_total;
-      this.cartCount = res.json().count;
-      this.getCart();
-      swal(res.json().message, "", "success");
+      if (res.json().status === 400) {
+        swal(res.json().message, "", "error");
+      } else {
+        this.cartDetails = res.json().selling_price_total;
+        this.cartCount = res.json().count;
+        this.getCart();
+        swal(res.json().message, "", "success");
+      }
+
     }, err => {
 
     })
@@ -103,7 +108,7 @@ export class MysavedlistComponent implements OnInit {
   showProduxtDetails(prodId) {
     this.router.navigate(['/productdetails'], { queryParams: { prodId: prodId } });
   }
-  vegetablesData=[];
+  vegetablesData = [];
   VegetablesData() {
     this.skuData = [];
     this.appService.getVegetables().subscribe(res => {

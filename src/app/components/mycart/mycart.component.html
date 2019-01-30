@@ -14,6 +14,9 @@
                         <div class="row items align-items-center" *ngFor="let data of cartData">
 
                             <div class="col-md-3 text-center">
+                                <div class="wish-list">
+                                    <a (click)="addtoWish(data.product_id,data.products.skid)"></a>
+                                </div>
                                 <img [src]="data.products.img">
                             </div>
                             <div class="col-md-3">
@@ -60,6 +63,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 price">
+                                <h6>You Save: BD:</h6>
                                 <h6>Total : BD {{data.products.selling_price}}</h6>
                             </div>
 
