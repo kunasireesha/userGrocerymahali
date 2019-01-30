@@ -22,8 +22,7 @@
                 <div class="col-md-6">
                     <div class="quantity-price text-center">
                         <select (change)="changeSize($event.target.value)">
-                            <option value="" data-icon="images/sample-1.jpg" class="left" *ngFor="let sku of prodData"
-                                value="{{sku.skid}}">{{sku.size}}
+                            <option value="" data-icon="images/sample-1.jpg" class="left" *ngFor="let sku of prodData" value="{{sku.skid}}">{{sku.size}}
                                 - BD {{sku.offer_price}}</option>
                             <!-- <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
               <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option> -->

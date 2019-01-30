@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ImageZoomModule } from 'angular2-image-zoom';
 //components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -43,93 +44,94 @@ import swal from 'sweetalert'
 
 
 export function HttpLoaderFactory(http: HttpClient) {
-	return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+    return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		HomeComponent,
-		HeaderComponent,
-		FooterComponent,
-		AboutusComponent,
-		LoginComponent,
-		RegistrationComponent,
-		ProductdetailsComponent,
-		MycartComponent,
-		ProductsComponent,
-		ItemsComponent,
-		OrderplacedComponent,
-		UseraccountComponent,
-		MysavedlistComponent,
-		PromocodesComponent,
-		NumberOnlyDirective,
-		AlphabetsOnly,
-		EmailOnly,
-		AlphaNumericOnly
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        HeaderComponent,
+        FooterComponent,
+        AboutusComponent,
+        LoginComponent,
+        RegistrationComponent,
+        ProductdetailsComponent,
+        MycartComponent,
+        ProductsComponent,
+        ItemsComponent,
+        OrderplacedComponent,
+        UseraccountComponent,
+        MysavedlistComponent,
+        PromocodesComponent,
+        NumberOnlyDirective,
+        AlphabetsOnly,
+        EmailOnly,
+        AlphaNumericOnly
 
-	],
-	imports: [
-		BrowserModule,
-		HttpClientModule,
-		MatDialogModule,
-		BrowserAnimationsModule,
-		ReactiveFormsModule,
-		FormsModule,
-		Ng2SearchPipeModule,
-		HttpModule,
-		NgxPaginationModule,
-		MDBBootstrapModule.forRoot(),
-		TranslateModule.forRoot({
-			loader: {
-				provide: TranslateLoader,
-				useFactory: HttpLoaderFactory,
-				deps: [HttpClient]
-			}
-		}),
-		RouterModule.forRoot([
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        MatDialogModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        FormsModule,
+        Ng2SearchPipeModule,
+        HttpModule,
+        NgxPaginationModule,
+        ImageZoomModule,
+        MDBBootstrapModule.forRoot(),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        RouterModule.forRoot([
 
-			{ path: '', component: HomeComponent },
-			{ path: 'aboutUs', component: AboutusComponent },
-			{ path: 'productdetails', component: ProductdetailsComponent, data: { some_data: 'some value' } },
-			{
-				path: 'products',
-				component: ProductsComponent,
-			},
-			{
-				path: 'Mycart',
-				component: MycartComponent,
-			},
-			{
-				path: 'Orderplaced',
-				component: OrderplacedComponent,
-			},
-			{
-				path: 'Products',
-				component: ProductsComponent,
-			},
-			// { path: 'myaccount', component: UseraccountComponent, data: [{ page: 'profile' }] },
-			// { path: 'wishlistAccount', component: UseraccountComponent, data: [{ page: 'wishlist' }] },
-			// { path: 'myorders', component: UseraccountComponent, data: [{ page: 'orders' }] },
-			// { path: 'notifications', component: UseraccountComponent, data: [{ page: 'notifications' }] },
-			// { path: 'mysavedlist', component: MysavedlistComponent, data: [{ page: 'Mysavedlist' }] },
-			// { path: 'aboutus', component: AboutusComponent, data: [{ page: 'Aboutus' }] }
-			{ path: 'myaccount', component: UseraccountComponent, data: [{ page: 'profile' }] },
-			{ path: 'wishlistAccount', component: UseraccountComponent, data: [{ page: 'wishlist' }] },
-			{ path: 'myorders', component: UseraccountComponent, data: [{ page: 'orders' }] },
-			{ path: 'changePw', component: UseraccountComponent, data: [{ page: 'changePw' }] },
-			{ path: 'mysavedlist', component: MysavedlistComponent, data: [{ page: 'Mysavedlist' }] },
-			{ path: 'aboutus', component: AboutusComponent, data: [{ page: 'Aboutus' }] },
-			{ path: 'addProduct', component: UseraccountComponent, data: [{ page: 'addProduct' }] },
-			{ path: 'myProduct', component: UseraccountComponent, data: [{ page: 'myproduct' }] },
-			{ path: 'deliveryAddr', component: UseraccountComponent, data: [{ page: 'deliveryAddr' }] },
-		], { useHash: true })
-	],
-	schemas: [NO_ERRORS_SCHEMA],
-	providers: [appService],
-	bootstrap: [AppComponent],
-	entryComponents: [LoginComponent, RegistrationComponent, ItemsComponent, PromocodesComponent],
-	exports: [BrowserModule, TranslateModule]
+            { path: '', component: HomeComponent },
+            { path: 'aboutUs', component: AboutusComponent },
+            { path: 'productdetails', component: ProductdetailsComponent, data: { some_data: 'some value' } },
+            {
+                path: 'products',
+                component: ProductsComponent,
+            },
+            {
+                path: 'Mycart',
+                component: MycartComponent,
+            },
+            {
+                path: 'Orderplaced',
+                component: OrderplacedComponent,
+            },
+            {
+                path: 'Products',
+                component: ProductsComponent,
+            },
+            // { path: 'myaccount', component: UseraccountComponent, data: [{ page: 'profile' }] },
+            // { path: 'wishlistAccount', component: UseraccountComponent, data: [{ page: 'wishlist' }] },
+            // { path: 'myorders', component: UseraccountComponent, data: [{ page: 'orders' }] },
+            // { path: 'notifications', component: UseraccountComponent, data: [{ page: 'notifications' }] },
+            // { path: 'mysavedlist', component: MysavedlistComponent, data: [{ page: 'Mysavedlist' }] },
+            // { path: 'aboutus', component: AboutusComponent, data: [{ page: 'Aboutus' }] }
+            { path: 'myaccount', component: UseraccountComponent, data: [{ page: 'profile' }] },
+            { path: 'wishlistAccount', component: UseraccountComponent, data: [{ page: 'wishlist' }] },
+            { path: 'myorders', component: UseraccountComponent, data: [{ page: 'orders' }] },
+            { path: 'changePw', component: UseraccountComponent, data: [{ page: 'changePw' }] },
+            { path: 'mysavedlist', component: MysavedlistComponent, data: [{ page: 'Mysavedlist' }] },
+            { path: 'aboutus', component: AboutusComponent, data: [{ page: 'Aboutus' }] },
+            { path: 'addProduct', component: UseraccountComponent, data: [{ page: 'addProduct' }] },
+            { path: 'myProduct', component: UseraccountComponent, data: [{ page: 'myproduct' }] },
+            { path: 'deliveryAddr', component: UseraccountComponent, data: [{ page: 'deliveryAddr' }] },
+        ], { useHash: true })
+    ],
+    schemas: [NO_ERRORS_SCHEMA],
+    providers: [appService],
+    bootstrap: [AppComponent],
+    entryComponents: [LoginComponent, RegistrationComponent, ItemsComponent, PromocodesComponent],
+    exports: [BrowserModule, TranslateModule]
 })
 export class AppModule {
 
