@@ -111,7 +111,7 @@ export class HeaderComponent implements OnInit {
             first_name: ['', Validators.required],
             last_name: ['', Validators.required],
             email: ['', Validators.required],
-            mobile_number: ['', [Validators.required]],
+            mobile_number: ['', [Validators.required, Validators.minLength(10)]],
             password: ['', [Validators.required, Validators.minLength(6)]],
             latitude: 16.398956,
             longitude: 78.637009
@@ -272,6 +272,9 @@ export class HeaderComponent implements OnInit {
                 // this.showOpacity = false;
                 // this.onCloseCancel();
                 // this.router.navigate(['/address']);
+            } else if (resp.json().status === 400) {
+                swal(resp.json().message, "", "error");
+                // jQuery("#signupmodal").modal("hide");
             }
         }, err => {
 

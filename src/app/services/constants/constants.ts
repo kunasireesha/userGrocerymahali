@@ -4,7 +4,7 @@ export const AppSettings = {
     registrationUrl: baseUrl + 'users/registration',
     loginUrl: baseUrl + 'users/login',
     forgotPw: baseUrl + 'users/forgot_password',
-    changePwdUrl: baseUrl + 'users/changepassword',
+    changePwdUrl: baseUrl + 'users/change_password',
     updateProfile: baseUrl + 'users/update_profile',
     categoriesUrl: baseUrl + 'categories/',
     subCatUrl: baseUrl + 'sub_categories',

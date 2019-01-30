@@ -11,11 +11,13 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductsComponent implements OnInit {
   current;
   wholeId;
+  catName;
   product;
   serProd = false;
   wholeProd = false;
   showSubCats = false;
   noData: boolean;
+  subCat;
   // nodata = false;
   // noData;
   subCatData = [];
@@ -34,7 +36,6 @@ export class ProductsComponent implements OnInit {
       } else if (params.action === "category") {
         this.catId = params.catId;
         this.catName = params.catName;
-        alert(this.catName);
         this.getCatProducts('');
         this.wholeProd = false;
         this.serProd = true;

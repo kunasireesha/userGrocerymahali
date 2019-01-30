@@ -25,6 +25,7 @@ import { ProductdetailsComponent } from './components/productdetails/productdeta
 import { ProductsComponent } from './components/products/products.component';
 import { MycartComponent } from './components/mycart/mycart.component';
 import { ItemsComponent } from './components/items/items.component';
+import { ContactComponent } from './components/contact/contact.component';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/of';
@@ -53,6 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 		HeaderComponent,
 		FooterComponent,
 		AboutusComponent,
+		ContactComponent,
 		LoginComponent,
 		RegistrationComponent,
 		ProductdetailsComponent,
@@ -123,6 +125,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 			{ path: 'addProduct', component: UseraccountComponent, data: [{ page: 'addProduct' }] },
 			{ path: 'myProduct', component: UseraccountComponent, data: [{ page: 'myproduct' }] },
 			{ path: 'deliveryAddr', component: UseraccountComponent, data: [{ page: 'deliveryAddr' }] },
+			{ path: 'contact', component: ContactComponent, data: [{ page: 'contact' }] },
 		], { useHash: true })
 	],
 	schemas: [NO_ERRORS_SCHEMA],

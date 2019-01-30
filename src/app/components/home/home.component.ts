@@ -181,22 +181,22 @@ export class HomeComponent implements OnInit {
   // get all products
   allproductsData = [];
   allArr = [];
-  allProductsData() {
-    this.vegArr = [];
-    this.fruitArr = [];
-    this.teaArr = [];
-    this.breadArr = [];
-    this.juiceArr = [];
-    this.allArr = [];
-    this.appService.getAllProducts().subscribe(res => {
-      this.allproductsData = res.json().data;
-      for (var i = 0; i < this.vegetablesData.length; i++) {
-        this.allproductsData[i].sku_details.product_name = this.allproductsData[i].product_name;
-        this.allArr.push(this.allproductsData[i].sku_details)
-      }
-    }, err => {
-    })
-  }
+  // allProductsData() {
+  //   this.vegArr = [];
+  //   this.fruitArr = [];
+  //   this.teaArr = [];
+  //   this.breadArr = [];
+  //   this.juiceArr = [];
+  //   this.allArr = [];
+  //   this.appService.getAllProducts().subscribe(res => {
+  //     this.allproductsData = res.json().data;
+  //     for (var i = 0; i < this.vegetablesData.length; i++) {
+  //       this.allproductsData[i].sku_details.product_name = this.allproductsData[i].product_name;
+  //       this.allArr.push(this.allproductsData[i].sku_details)
+  //     }
+  //   }, err => {
+  //   })
+  // }
   vegdata = [];
   // vegetables
   vegArr = [];
