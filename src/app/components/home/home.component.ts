@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
     this.productService.product = this.product;
     this.getBanners();
     this.getBrands();
-    this.allProductsData();
+    // this.allProductsData();
   }
   starList: boolean[] = [true, true, true, true, true];       // create a list which contains status of 5 stars
   rating: number;

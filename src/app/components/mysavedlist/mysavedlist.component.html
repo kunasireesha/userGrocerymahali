@@ -89,7 +89,7 @@
               </div>
             </div> -->
           <!-- </div> -->
-       
+
         </div>
         <div class="row">
           <div class="col-md-3 item" *ngFor="let item of skuData">
@@ -104,8 +104,13 @@
                 <div class="card-block add-to-cart">
                   <h5 class="text-center">{{item.product_name}} </h5>
                   <p class="text-center">
-                    BD {{item.selling_price}}
+                    <span class="text-green"><strong>BD {{item.selling_price}}</strong></span>&nbsp;
                     <strike>BD {{item.actual_price}}</strike>
+                  </p>
+                  <p class="text-center">
+                    <span class="text-green"><strong>BD
+                        {{([(item.actual_price-item.selling_price)/item.selling_price]*100).toFixed(0)}}%</strong></span>&nbsp;
+                    <strike>OFF</strike>
                   </p>
                   <div class="quantity-price text-center">
                     <select (change)="changeSize($event.target.value)">
@@ -127,10 +132,10 @@
                 No data
               </div>
             </div>
-  
+
           </div>
         </div>
-        <!-- slider -->       
+        <!-- slider -->
         <!-- end deals -->
         <!-- slider -->
       </div>

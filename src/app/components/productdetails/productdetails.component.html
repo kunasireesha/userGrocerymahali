@@ -2,7 +2,7 @@
 <div class="container productDetails">
     <p>
         <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
-        <a>Fruits & vegetables </a>&nbsp;&nbsp;>&nbsp;vegetables&nbsp;&nbsp;>&nbsp;Potato
+        <a>{{category_name}} </a>&nbsp;&nbsp;>&nbsp;<a *ngIf="sub_category_name">{{sub_category_name}}</a>
     </p>
     <div class="row">
         <div class="col-md-2">
@@ -11,6 +11,9 @@
             </div>
         </div>
         <div class="col-md-4">
+            <div class="offer-label">
+                <img src="assets/images/offer-label.png">
+            </div>
             <div class="wish-list">
                 <a><i class="fas fa-heart" (click)="addtoWish()"></i></a>
             </div>
@@ -22,7 +25,8 @@
                 <div class="col-md-6">
                     <div class="quantity-price text-center">
                         <select (change)="changeSize($event.target.value)">
-                            <option value="" data-icon="images/sample-1.jpg" class="left" *ngFor="let sku of prodData" value="{{sku.skid}}">{{sku.size}}
+                            <option value="" data-icon="images/sample-1.jpg" class="left" *ngFor="let sku of prodData"
+                                value="{{sku.skid}}">{{sku.size}}
                                 - BD {{sku.offer_price}}</option>
                             <!-- <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
               <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option> -->

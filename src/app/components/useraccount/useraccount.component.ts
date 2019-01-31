@@ -222,6 +222,7 @@ export class UseraccountComponent implements OnInit {
   ordData = [];
   orderDet = [];
   count;
+  ordAdd = [];
   ordDetails(ordId) {
     this.ordId = ordId;
     this.appService.orderById(ordId).subscribe(resp => {
@@ -232,6 +233,7 @@ export class UseraccountComponent implements OnInit {
       }
       this.orderDet = resp.json().Order.details[0];
       this.count = resp.json().Order.total_selling_price;
+      this.ordAdd = resp.json().delivery_address[0];
 
     })
   }

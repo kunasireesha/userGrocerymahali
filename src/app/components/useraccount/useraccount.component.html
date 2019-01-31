@@ -941,15 +941,15 @@
         <p>Shipping Address</p>
       </div>
       <div class="address-bar">
-        <h4 class="office-header">OFFICE</h4>
+        <h4 class="office-header">{{ordAdd.address_type}}</h4>
         <p>
-          <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Ashok Plaza, Near Masab
-          Tank, Tolichowki,
-          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mehidipatnam,Hyderabad, 500038
+          <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ordAdd.house_no}}
+          {{ordAdd.landmark}},
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ordAdd.city}},{{ordAdd.state}} {{ordAdd.pin_code}}
         </p>
         <p>
           <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-          <span>97005432126</span>
+          <span>{{ordAdd.mobile_number}}</span>
         </p>
       </div>
       <div class="order-details">
@@ -1005,8 +1005,13 @@
             <div class="card-block add-to-cart">
               <h5 class="text-center">{{item.product_name}} </h5>
               <p class="text-center">
-                BD {{item.selling_price}}
+                <span class="text-green"><strong>BD {{item.selling_price}}</strong></span>&nbsp;
                 <strike>BD {{item.actual_price}}</strike>
+              </p>
+              <p class="text-center">
+                <span class="text-green"><strong>BD
+                    {{[(item.actual_price-item.selling_price)/item.selling_price]*100}}%</strong></span>&nbsp;
+                <strike>OFF</strike>
               </p>
               <div class="quantity-price text-center">
                 <select (change)="changeSize($event.target.value)">
@@ -1070,8 +1075,13 @@
           <div class="card-block add-to-cart">
             <h5 class="text-center">{{item.product_name}} </h5>
             <p class="text-center">
-              BD {{item.selling_price}}
+              <span class="text-green"><strong>BD {{item.selling_price}}</strong></span>&nbsp;
               <strike>BD {{item.actual_price}}</strike>
+            </p>
+            <p class="text-center">
+              <span class="text-green"><strong>BD
+                  {{[(item.actual_price-item.selling_price)/item.selling_price]*100}}%</strong></span>&nbsp;
+              <strike>OFF</strike>
             </p>
             <div class="quantity-price text-center">
               <select (change)="changeSize($event.target.value)">
@@ -1104,8 +1114,13 @@
           <div class="card-block add-to-cart">
             <h5 class="text-center">{{item.product_name}} </h5>
             <p class="text-center">
-              BD {{item.selling_price}}
+              <span class="text-green"><strong>BD {{item.selling_price}}</strong></span>&nbsp;
               <strike>BD {{item.actual_price}}</strike>
+            </p>
+            <p class="text-center">
+              <span class="text-green"><strong>BD
+                  {{[(item.actual_price-item.selling_price)/item.selling_price]*100}}%</strong></span>&nbsp;
+              <strike>OFF</strike>
             </p>
             <div class="quantity-price text-center">
               <select (change)="changeSize($event.target.value)">
@@ -1208,8 +1223,13 @@
           <div class="card-block add-to-cart">
             <h5 class="text-center">{{item.product_name}} </h5>
             <p class="text-center">
-              BD {{item.selling_price}}
+              <span class="text-green"><strong>BD {{item.selling_price}}</strong></span>&nbsp;
               <strike>BD {{item.actual_price}}</strike>
+            </p>
+            <p class="text-center">
+              <span class="text-green"><strong>BD
+                  {{[(item.actual_price-item.selling_price)/item.selling_price]*100}}%</strong></span>&nbsp;
+              <strike>OFF</strike>
             </p>
             <div class="quantity-price text-center">
               <select (change)="changeSize($event.target.value)">

@@ -66,9 +66,15 @@ export class ProductdetailsComponent implements OnInit {
   prodName;
   description;
   prodImages = [];
+  prodbyIdData;
+  category_name;
+  sub_category_name;
   getProductById() {
     this.appService.getProductById(this.prodId).subscribe(res => {
       this.prodId = res.json().products.product_id;
+      this.prodbyIdData = res.json().products;
+      this.category_name = this.prodbyIdData.category_name;
+      this.sub_category_name = this.prodbyIdData.sub_category_name;
       this.prodsData = res.json().products.sku_details;
       for (var j = 0; j < this.prodsData.length; j++) {
         for (var k = 0; k < this.prodsData[j].images.length; k++) {
@@ -83,6 +89,7 @@ export class ProductdetailsComponent implements OnInit {
       this.skid = this.prodData[0].skid;
       this.prodName = res.json().products.product_name;
       this.description = this.prodData[0].description;
+
     }, err => {
 
     })
