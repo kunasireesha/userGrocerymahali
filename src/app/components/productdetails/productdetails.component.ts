@@ -70,6 +70,7 @@ export class ProductdetailsComponent implements OnInit {
   category_name;
   sub_category_name;
   getProductById() {
+
     this.appService.getProductById(this.prodId).subscribe(res => {
       this.prodId = res.json().products.product_id;
       this.prodbyIdData = res.json().products;
