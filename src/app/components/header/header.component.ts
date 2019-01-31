@@ -113,6 +113,7 @@ export class HeaderComponent implements OnInit {
             email: ['', Validators.required],
             mobile_number: ['', [Validators.required, Validators.minLength(10)]],
             password: ['', [Validators.required, Validators.minLength(6)]],
+            retype_password: ['', [Validators.required, Validators.minLength(6)]],
             latitude: 16.398956,
             longitude: 78.637009
         });
@@ -260,25 +261,31 @@ export class HeaderComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-        this.appService.registration(this.registerForm.value).subscribe(resp => {
-            if (resp.json().status === 200) {
-                swal(resp.json().message, "", "success");
-                jQuery("#signupmodal").modal("hide");
-                $('body').removeClass('modal-open');
-                $('.modal-backdrop').remove();
-                // this.showRegistration = false;
-                localStorage.setItem('userId', (resp.json().reg_id));
-                // this.myAccount = true
-                // this.showOpacity = false;
-                // this.onCloseCancel();
-                // this.router.navigate(['/address']);
-            } else if (resp.json().status === 400) {
-                swal(resp.json().message, "", "error");
-                // jQuery("#signupmodal").modal("hide");
-            }
-        }, err => {
+        if (this.registerForm.value.password != this.registerForm.value.retype_password) {
+            swal("Password doesn't matched", "", "warning");
+            return;
+        } else {
+            this.appService.registration(this.registerForm.value).subscribe(resp => {
+                if (resp.json().status === 200) {
+                    swal(resp.json().message, "", "success");
+                    jQuery("#signupmodal").modal("hide");
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    // this.showRegistration = false;
+                    localStorage.setItem('userId', (resp.json().reg_id));
+                    // this.myAccount = true
+                    // this.showOpacity = false;
+                    // this.onCloseCancel();
+                    // this.router.navigate(['/address']);
+                } else if (resp.json().status === 400) {
+                    swal(resp.json().message, "", "error");
+                    // jQuery("#signupmodal").modal("hide");
+                }
+            }, err => {
 
-        })
+            })
+        }
+
 
 
     }

@@ -20,7 +20,6 @@
     body.modal-open {
       padding-right: 40px !important;
     }
-
   </style>
 </head>
 
@@ -49,6 +48,11 @@
     modal.style.display = "none";
   }
 
+</script>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
 </script>
 
 </html>
