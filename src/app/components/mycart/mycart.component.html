@@ -3,8 +3,10 @@
     <div class="row">
         <h5 (click)="showCart()">
             <span>
-                <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCartItems"></i>
-                <i class="fa fa-minus" aria-hidden="true" *ngIf="showCartItems"></i>
+                <img src="assets/images/1.png" *ngIf="!showCartItems">
+                <img src="assets/images/checked.png" *ngIf="showCartItems">
+                <!-- <i class="fa fa-plus" aria-hidden="true"></i>
+                <i class="fa fa-minus" aria-hidden="true"></i> -->
             </span>&nbsp;&nbsp;My Cart</h5>
         <div class="container mycart" *ngIf="showCartItems">
             <div class="row">
@@ -247,8 +249,8 @@
     <div class="row">
         <h5 (click)="showAddress()">
             <span>
-                <i class="fa fa-plus" aria-hidden="true" *ngIf="!showDeliveryAddress"></i>
-                <i class="fa fa-minus" aria-hidden="true" *ngIf="showDeliveryAddress"></i>
+                <img src="assets/images/2.png" *ngIf="!showDeliveryAddress">
+                <img src="assets/images/checked.png" *ngIf="showDeliveryAddress">
             </span>&nbsp;&nbsp;Delivery Address
 
         </h5>
@@ -488,8 +490,8 @@
     <div class="row " [ngClass]="{ 'margin':showPaymentMethode || !showPaymentMethode} ">
         <h5 (click)="showPayment() ">
             <span>
-                <i class="fa fa-plus " aria-hidden="true " *ngIf="!showPaymentMethode "></i>
-                <i class="fa fa-minus " aria-hidden="true " *ngIf="showPaymentMethode "></i>
+                <img src="assets/images/3.png" *ngIf="!showPaymentMethode">
+                <img src="assets/images/checked.png" *ngIf="showPaymentMethode">
             </span>&nbsp;&nbsp;Payment Method
         </h5>
         <div class="container mycart paymentMethode " *ngIf="showPaymentMethode ">
