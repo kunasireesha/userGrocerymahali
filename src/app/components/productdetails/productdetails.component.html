@@ -41,7 +41,16 @@
                 <span>
                     <strike><strong>BD : </strong> {{actual_price}}</strike>(Inclusive of all taxes)</span>
             </p>
-            <br />
+            <!-- <div class="quantity" *ngFor="let sku of prodData">
+                <button class="minus-btn" type="button" name="button" (click)="itemDecrease(item.cart_id)">
+                    <i class="fa fa-minus " aria-hidden="true"></i>
+                </button>
+
+                <input type="text" name="quantity" [(ngModel)]="item.quantity" readonly="readonly" value="{{item.quantity}}" />
+                <button class="plus-btn" type="button" name="button" (click)="itemIncrease(item.cart_id)">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </div> -->
             <p>
                 <span>Shop for BD.2000 & get 5% Cashback</span>
             </p>

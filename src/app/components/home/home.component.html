@@ -137,7 +137,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a (click)="addtoCart(data.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
-                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="open(item.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
                         <li><a (click)="addtoWish(data.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
@@ -172,7 +172,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a (click)="addtoCart(data.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
-                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="open(item.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
                         <li><a (click)="addtoWish(data.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
@@ -181,6 +181,37 @@
             </div>
         </div>
         <!-- friuts -->
+        <!-- zoom model -->
+        <div class="modal fade" id="enlargeImg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="close-modal">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="modal-dialog modal-dialog-centered modal-popup-fullimage" role="document">
+                            <div class="modal-content enlargeImg">
+
+                                <div class="modal-body large-body">
+                                    <div class="">
+                                        <img class="img-fluid" [src]="enlargeImg" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- zoom model -->
         <!-- tea -->
         <div class="row " *ngIf="showTeaScreen">
             <div class="col-md-3" *ngFor="let data of teaData1">
@@ -207,7 +238,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a (click)="addtoCart(data.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
-                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="open(item.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
                         <li><a (click)="addtoWish(data.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
@@ -243,7 +274,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a (click)="addtoCart(data.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
-                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="open(item.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
                         <li><a (click)="addtoWish(data.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
@@ -276,7 +307,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a (click)="addtoCart(data.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
-                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="open(item.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
                         <li><a (click)="addtoWish(data.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
@@ -1253,5 +1284,35 @@
     </div>
     <!--/.Controls-->
 </div>
+<!-- zoom model -->
+<div class="modal fade" id="enlargeImg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="close-modal">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="modal-dialog modal-dialog-centered modal-popup-fullimage" role="document">
+                    <div class="modal-content enlargeImg">
 
+                        <div class="modal-body large-body">
+                            <div class="">
+                                <img class="img-fluid" [src]="enlargeImg" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- zoom model -->
 <!-- end recommended products -->
