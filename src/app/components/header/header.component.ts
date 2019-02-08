@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
     registerForm: FormGroup;
     loginForm: FormGroup;
     forgotForm: FormGroup;
+    otpForm: FormGroup;
+    changePassForm: FormGroup;
     submitted = false;
     loginSubmitted = false;
     forgotSubmitted = false;
@@ -38,6 +40,7 @@ export class HeaderComponent implements OnInit {
     showLogin = false;
     IsmodelShow = false;
     showCategories = false;
+    changePwSubmitted = false;
     subcat = [];
 
     constructor(public dialog: MatDialog, private router: Router, private formBuilder: FormBuilder, public appService: appService) {
@@ -50,8 +53,9 @@ export class HeaderComponent implements OnInit {
             this.showLoginScreen = false;
             this.myAccount = true;
             this.phone = true;
-            this.userMobile = JSON.parse(localStorage.getItem('phone'));
+            this.userMobile = (localStorage.getItem('phone'));
             this.userName = (localStorage.getItem('userName'));
+            this.getCart();
         }
         this.getCart();
     }
@@ -71,7 +75,7 @@ export class HeaderComponent implements OnInit {
             this.showLoginScreen = false;
             this.myAccount = true;
             this.phone = true;
-            this.userMobile = JSON.parse(localStorage.getItem('phone'));
+            this.userMobile = (localStorage.getItem('phone'));
             this.userName = (localStorage.getItem('userName'));
         }
         // if ((localStorage.token)! === undefined) {
@@ -124,8 +128,15 @@ export class HeaderComponent implements OnInit {
         this.forgotForm = this.formBuilder.group({
             mob_number: ['', [Validators.required]],
         });
+        this.otpForm = this.formBuilder.group({
+            otp_number: ['', [Validators.required]],
+        });
+        this.changePassForm = this.formBuilder.group({
+            password: ['', [Validators.required, Validators.minLength(6)]]
+        });
         this.getCategories();
         this.getProduct();
+        this.getCart();
         // this.login();
         // this.getLocation();
         // this.getCart();
@@ -253,6 +264,8 @@ export class HeaderComponent implements OnInit {
         this.showLoginScreen = true;
         this.myAccount = false;
         this.phone = false;
+        localStorage.clear();
+        this.getCart();
         this.router.navigate(["/"]);
     }
     get f() { return this.registerForm.controls; }
@@ -314,6 +327,7 @@ export class HeaderComponent implements OnInit {
                     localStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
                     this.loginDetails = response.json().data[0];
                     this.phone = true;
+                    this.ngOnInit();
 
                 })
             }
@@ -351,6 +365,8 @@ export class HeaderComponent implements OnInit {
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
                 swal(resp.json().message, "", "success");
+                jQuery("#otpScreen").modal("show");
+                localStorage.setItem('mobile_number', (this.forgotForm.value.mob_number));
             } else {
                 swal(resp.json().message, "", "error");
             }
@@ -397,6 +413,13 @@ export class HeaderComponent implements OnInit {
                 return;
             } else {
                 this.cartData = res.json().cart_details;
+                this.cartData.sort(function (a, b) {
+                    var keyA = new Date(a.added_on),
+                        keyB = new Date(b.added_on)
+                    if (keyA < keyB) return -1;
+                    if (keyA > keyB) return 1;
+                    return 0;
+                });
                 for (var i = 0; i < this.cartData.length; i++) {
                     this.cartData[i].prodName = this.cartData[i].products.product_name;
                     for (var j = 0; j < this.cartData[i].products.sku_details.length; j++) {
@@ -424,11 +447,11 @@ export class HeaderComponent implements OnInit {
         })
     }
     search(product, action) {
-        // this.appService.searchProducts(product).subscribe(res=> {
-        this.router.navigate(['/products'], { queryParams: { product: product, action: action } });
-        // },err=> {
-
-        // })    
+        if (product === undefined || "") {
+            swal("Please enter field", "", "warning");
+        } else {
+            this.router.navigate(['/products'], { queryParams: { product: product, action: action } });
+        }
     }
     // updateCart() {
     //     var inData =
@@ -444,5 +467,56 @@ export class HeaderComponent implements OnInit {
         this.showOpacity = true;
         this.showSubCats = false;
     }
+    viewCart() {
+        if (localStorage.userId === undefined) {
+            jQuery("#loginmodal").modal("show");
+        } else {
+            this.router.navigate(["/Mycart"]);
+        }
+    }
+    otpNumber;
+    otpScreen() {
+        var data = {
+            'otp': this.otpNumber,
+            'mobile_number': localStorage.mobile_number
+        }
+        this.appService.otpVerify(data).subscribe(resp => {
+            if (resp.json().status === 200) {
+                swal(resp.json().message, "", "success");
+                jQuery("#otpScreen").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                jQuery("#changepwd").modal("show");
 
+            } else {
+                swal(resp.json().message, "", "error");
+            }
+        })
+        // jQuery("#otpScreen").modal("hide");
+        // $('body').removeClass('modal-open');
+        // $('.modal-backdrop').remove();
+        // jQuery("#changepwd").modal("show");
+
+    }
+    get f4() { return this.changePassForm.controls; }
+    ChangePw() {
+        this.changePwSubmitted = true;
+
+        if (this.changePassForm.invalid) {
+            return;
+        }
+        this.changePassForm.value.mobile_number = localStorage.mobile_number;
+        this.appService.changePwForgot(this.changePassForm.value).subscribe(resp => {
+            if (resp.json().status === 200) {
+                swal(resp.json().message, "", "success");
+                jQuery("#changepwd").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+            } else {
+                swal(resp.json().message, "", "error");
+            }
+        }, err => {
+
+        })
+    }
 }

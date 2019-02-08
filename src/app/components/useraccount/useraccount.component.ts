@@ -50,7 +50,7 @@ export class UseraccountComponent implements OnInit {
   // item = {
   //   quantity: 1
   // }
-  typeval = {}
+  typeval;
   ngOnInit() {
     this.getAdd();
     this.getProfile();
@@ -237,6 +237,7 @@ export class UseraccountComponent implements OnInit {
 
     })
   }
+
   offerZone() {
     this.showNotifications = false;
     this.showOrderDetails = false;
@@ -334,6 +335,13 @@ export class UseraccountComponent implements OnInit {
           this.wishArr.push(this.wishData[i].sku_details);
         }
       }
+      this.wishArr.sort(function (a, b) {
+        var keyA = new Date(a.created_on),
+          keyB = new Date(b.created_on)
+        if (keyA < keyB) return - 1;
+        if (keyA > keyB) return 1;
+        return 0;
+      });
 
     }, err => {
 

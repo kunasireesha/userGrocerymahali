@@ -54,4 +54,6 @@ export const AppSettings = {
     getJuice: baseUrl + "products/juice",
     getBeaty: baseUrl + "products/users/beauty_products",
     modifyWish: baseUrl + "wish_list",
+    changeForgot: baseUrl + "users/change_password",
+    otpUrl: baseUrl + "users/request_otp",
 }

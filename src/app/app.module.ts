@@ -14,6 +14,7 @@ import { HttpModule } from '@angular/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ImageZoomModule } from 'angular2-image-zoom';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 //components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -83,6 +84,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         HttpModule,
         NgxPaginationModule,
         ImageZoomModule,
+        Ng2OrderModule,
         MDBBootstrapModule.forRoot(),
         TranslateModule.forRoot({
             loader: {

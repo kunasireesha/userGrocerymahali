@@ -19,6 +19,8 @@ export class MycartComponent implements OnInit {
     showPaymentMethode = false;
     showDeliveryType = false;
     addresses = false;
+    fruits = [];
+    sortData = [];
     constructor(public dialog: MatDialog, public appService: appService, private router: Router, private formBuilder: FormBuilder) { }
 
     ngOnInit() {
@@ -37,17 +39,33 @@ export class MycartComponent implements OnInit {
         this.getAdd();
         this.getSlots();
         this.paymentOptions();
+        this.fruits = [
+            {
+                cart_id: 1,
+                prodName: "Fresh Vegetables"
+            },
+            {
+                cart_id: 6,
+                prodName: "one Vegetables"
+            },
+            {
+                cart_id: 3,
+                prodName: "two Vegetables"
+            }
+        ];
+        this.sortData = this.fruits.sort();
+        console.log(this.sortData);
     }
     get f() { return this.addressForm.controls; }
 
     saveAddress() {
+        alert(this.type);
         this.addressForm.value.address_type = this.type;
         this.submitted = true;
         if (this.addressForm.invalid) {
             return;
         }
         this.appService.addaddress(this.addressForm.value).subscribe(res => {
-            console.log(this.addressForm.value);
             this.getAdd();
             this.showAddresses = true;
             this.addresses = false;
@@ -229,6 +247,7 @@ export class MycartComponent implements OnInit {
         }
     }
     getAddData = [];
+    testData = [];
     getAdd() {
         this.appService.getAddress().subscribe(res => {
             this.getAddData = res.json().delivery_address;
@@ -236,10 +255,18 @@ export class MycartComponent implements OnInit {
 
         })
     };
+    cartArr = [];
     getCart() {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartData = res.json().cart_details;
+            this.cartData.sort(function (a, b) {
+                var keyA = new Date(a.added_on),
+                    keyB = new Date(b.added_on)
+                if (keyA < keyB) return -1;
+                if (keyA > keyB) return 1;
+                return 0;
+            });
             for (var i = 0; i < this.cartData.length; i++) {
                 this.cartData[i].prodName = this.cartData[i].products.product_name;
                 for (var j = 0; j < this.cartData[i].products.sku_details.length; j++) {
@@ -248,9 +275,20 @@ export class MycartComponent implements OnInit {
                     this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
                     this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
                     this.cartData[i].products.actual_price = this.cartData[i].products.sku_details[0].actual_price;
+                    this.cartData[i].products.offer_price = this.cartData[i].products.sku_details[0].offer_price;
                     this.cartData[i].products.img = this.cartData[i].products.sku_details[0].image;
+                    this.cartArr.push(this.cartData[i].products);
                 }
             }
+            // this.cartArr.sort(function (a, b) {
+            //     var keyA = a.product_name,
+            //         keyB = b.product_name;
+            //     // Compare the 2 dates
+            //     if (keyA < keyB) return -1;
+            //     if (keyA > keyB) return 1;
+            //     return 0;
+            // });
+            // console.log(this.cartArr);
             this.cartCount = res.json().count;
             this.billing = res.json().selling_Price_bill;
         }, err => {

@@ -154,7 +154,8 @@
                     <div class="row cart-division" *ngFor="let item of cartData">
                         <div class="col-md-12 col-sm-12 col-lg-12">
                             <span class="delete">
-                                <i class="fa fa-times-circle-o cust-del" (click)="delCart(item.cart_id)"></i>
+                                <!-- <i class="fa fa-times-circle-o cust-del" (click)="delCart(item.cart_id)"></i> -->
+                                <img class="cust-del img" src="assets/images/error.png" (click)="delCart(item.cart_id)">
                             </span>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2">
@@ -188,7 +189,9 @@
                                 <h6>Price :
                                     <span style="color: #7eba00">BD {{item.products.selling_price}}</span>
                                 </h6>
+                                <span class="text-actual"><strike>BD&nbsp;{{item.products.actual_price}}</strike></span>
                             </div>
+
                         </div>
                     </div>
 
@@ -199,7 +202,9 @@
                 <div class="row sub" *ngIf="cartData.length>0">
                     <div class="col-md-4 col-sm-4">
                         <div class="cust-potatos">
-                            <p>Sub Total</p>
+                            <h5>
+                                <span class="sub-title">Sub Total</span>
+                            </h5>
                         </div>
                     </div>
 
@@ -207,9 +212,9 @@
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <div class="cust-potatos">
-                            <h6>
-                                <span style="color: #7eba00">BD {{billing}}</span>
-                            </h6>
+                            <h5>
+                                <span class="sub-tot">BD {{billing}}</span>
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -220,7 +225,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
-                        <div class="checkout" data-dismiss="modal" routerLink="/Mycart">
+                        <div class="checkout" data-dismiss="modal" (click)="viewCart()">
                             <a>View cart & Checkout</a>
                         </div>
                     </div>
@@ -536,7 +541,57 @@
 </div>
 <!-- ./forgot password modal -->
 
+<!-- otp model -->
+<div class="modal fade" id="otpScreen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header cust-mdlhdr">
+                <h5 class="modal-title login-title text-center" id="exampleModalLabel">OTP verification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times-circle cls-icon" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
 
+                            <div class="form-group cust-frmgrp1 row">
+                                <label class="col-sm-5 col-md-5 col-form-label frgot-size">Enter OTP
+                                    <span class="float-right">:</span>
+                                </label>
+
+                                <div class="col-sm-7 col-md-7">
+                                    <form>
+                                        <input type="text" [(ngModel)]="otpNumber" name="otpNumber" />
+                                        <!-- <div *ngIf="forgotSubmitted && f2.otp_number.errors" class="invalid-feedback">
+                                                <div *ngIf="f2.otp_number.errors.required">Mobile number is required</div>
+                                            </div> -->
+                                        <!-- 
+                                            <input type="text" formControlName="mob_number" class="form-control" [ngClass]="{ 'is-invalid': forgotSubmitted && f2.mob_number.errors }" />
+                                            <div *ngIf="forgotSubmitted && f2.mob_number.errors" class="invalid-feedback">
+                                                <div *ngIf="f2.mob_number.errors.required">Mobile number is required</div>
+                                            </div> -->
+                                        <div class="form-group cust-frmgrp">
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-danger cust-logbtn submt-btn" (click)="otpScreen()">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- otp model -->
 <!--  -->
 <div class="modal fade cat-model" id="itemdesc" tabindex="-1" role="dialog" aria-labelledby="itemdescLabel" aria-hidden="true">
     <div class="modal-dialog category-popup" role="document">
@@ -610,6 +665,54 @@
         </div>
     </div>
 </div>
+<!-- change password -->
+<div class="modal fade" id="changepwd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header cust-mdlhdr">
+                <h5 class="modal-title login-title text-center" id="exampleModalLabel">Change password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times-circle cls-icon" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group cust-frmgrp1 row">
+                                <label class="col-sm-5 col-md-5 col-form-label frgot-size">Enter Password
+                                    <span class="float-right">:</span>
+                                </label>
+
+                                <div class="col-sm-7 col-md-7">
+                                    <form [formGroup]="changePassForm" (ngSubmit)="ChangePw()">
+                                        <input type="text" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': changePwSubmitted && f4.password.errors }" />
+                                        <div *ngIf="changePwSubmitted && f4.password.errors" class="invalid-feedback">
+                                            <div *ngIf="f4.password.errors.required">Password is required</div>
+                                            <div *ngIf="f4.password.errors.minlength">Password must be atleast 6
+                                                characters</div>
+                                        </div>
+
+                                        <div class="form-group cust-frmgrp">
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-danger cust-logbtn submt-btn">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- change password -->
 <script>
     // Material Select Initialization
     $(document).ready(function () {

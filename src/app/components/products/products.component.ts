@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ProductService } from '../../services/productservice';
 import { appService } from './../../services/mahaliServices/mahali.service';
 import { ActivatedRoute } from '@angular/router';
+declare var jQuery: any;
+declare var $: any;
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',
@@ -287,9 +289,62 @@ export class ProductsComponent implements OnInit {
 
         })
     }
-    //   toggle(current){
-    //     this.current = current;
-    //     alert(this.current);
-    // this.current!== this.current;
-    //   }
+    enlargeImg;
+    openNew(skid): void {
+        if (this.serProducts) {
+            for (var i = 0; i < this.serProducts.length; i++) {
+                for (var j = 0; j < this.serProducts[i].sku_details.length; j++) {
+                    if (skid === this.serProducts[i].sku_details[j].skid) {
+                        this.enlargeImg = this.serProducts[i].sku_details[j].image;
+                        jQuery("#enlargeImg").modal("show");
+                    }
+                }
+            }
+        } else {
+            for (var i = 0; i < this.prodData.length; i++) {
+                for (var j = 0; j < this.prodData[i].sku_details.length; j++) {
+                    if (skid === this.prodData[i].sku_details[j].skid) {
+                        this.enlargeImg = this.prodData[i].sku_details[j].image;
+                        jQuery("#enlargeImg").modal("show");
+                    }
+                }
+
+            }
+        }
+
+
+
+
+        // for (var i = 0; i < this.teaData1.length; i++) {
+        //     for (var j = 0; j < this.teaData1[i].sku_details.length; j++) {
+        //         if (skid === this.teaData1[i].sku_details[j].skid) {
+        //             this.enlargeImg = this.teaData1[i].sku_details[j].image;
+        //             jQuery("#enlargeImg").modal("show");
+        //         }
+        //     }
+
+
+        // }
+        // for (var i = 0; i < this.breadData1.length; i++) {
+        //     for (var j = 0; j < this.breadData1[i].sku_details.length; j++) {
+        //         if (skid === this.breadData1[i].sku_details[j].skid) {
+        //             this.enlargeImg = this.breadData1[i].sku_details[j].image;
+        //             jQuery("#enlargeImg").modal("show");
+        //         }
+        //     }
+
+
+        // }
+        // for (var i = 0; i < this.juiceData1.length; i++) {
+        //     for (var j = 0; j < this.juiceData1[i].sku_details.length; j++) {
+        //         if (skid === this.juiceData1[i].sku_details[j].skid) {
+        //             this.enlargeImg = this.juiceData1[i].sku_details[j].image;
+        //             jQuery("#enlargeImg").modal("show");
+        //         }
+        //     }
+
+
+        // }
+
+    }
 }

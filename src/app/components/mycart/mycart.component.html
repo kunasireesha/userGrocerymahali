@@ -21,14 +21,26 @@
                                 </div>
                                 <img [src]="data.products.img">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <h6>{{data.prodName}}</h6>
                                 <div class="sort">
                                     <select>
-                                        <option [value]="data.products.skid">{{data.products.skuValue}}- BD
-                                            {{data.products.selling_price}}
+                                        <option [value]="data.products.skid">{{data.products.skuValue}}-
+                                            {{data.products.offer_price}}
                                         </option>
                                     </select>
+                                </div>
+                                <h6>Price : BD {{data.products.selling_price}}
+                                    <span>
+                                        <strike>BD {{data.products.actual_price}}</strike>
+                                    </span>
+                                </h6>
+                                <div class="custom-control custom-radio mahali-radio">
+                                    <input type="radio" id="customRadio3" name="customRadio3" class="custom-control-input mahali-input"
+                                        checked>
+                                    <label data-toggle="modal" data-target="#myModal" class="custom-control-label mahali-label"
+                                        for="customRadio3">Use
+                                        Promocode to get 20% Cashback</label>
                                 </div>
                             </div>
                             <div class="col-md-3 text-center">
@@ -47,150 +59,33 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <p class="close-btn" (click)="delCart(data.cart_id)">X</p>
+                            <div class="col-md-2">
+                                <img class="del-img" (click)="delCart(data.cart_id)" src="assets/images/close.png">
+                                <h6>You Save: BD. 0</h6>
+                                <h6>Total : BD.{{data.products.selling_price}}</h6>
                             </div>
-                            <div class="col-md-6 price">
-                                <h6>Price : BD {{data.products.selling_price}}
-                                    <span>
-                                        <strike>BD {{data.products.actual_price}}</strike>
-                                    </span>
-                                </h6>
-                                <div class="custom-control custom-radio mahali-radio">
-                                    <input type="radio" id="customRadio3" name="customRadio3" class="custom-control-input mahali-input"
-                                        checked>
-                                    <label data-toggle="modal" data-target="#myModal" class="custom-control-label mahali-label"
-                                        for="customRadio3">Use
-                                        Promocode to get 20% Cashback</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6 price">
-                                <h6>You Save: BD: 0</h6>
-                                <h6>Total : BD {{data.products.selling_price}}</h6>
+                            <div class="col-md-12 text-right">
+
                             </div>
 
-                            <br>
-                            <br>
-                            <br>
                             <hr>
                         </div>
-
-
-                        <!-- <div class="row items align-items-center">
-              <div class="col-md-3 text-center">
-                <img src="assets/images/pinapple.png" height="140px" width="140px">
-              </div>
-              <div class="col-md-3">
-                <h6>PineApple</h6>
-                <div class="sort">
-                  <select>
-                    <option>100gms</option>
-                    <option>200 gms</option>
-                    <option>300 gms</option>
-                    <option>500 gms</option>
-                  </select>
-                </div>
-                <div class="custom-control custom-radio mahali-radio">
-                  <input type="radio" id="customRadio2" name="customRadio2" class="custom-control-input mahali-input">
-                  <label class="custom-control-label mahali-label" for="customRadio2">Use Promocode to get 20% Cashback</label>
-                </div>
-              </div>
-              <div class="col-md-3 text-center">
-                <button class="btn btn-icon btn-maroon btn-minus">
-                  <span>
-                    <i class="fa fa-minus" aria-hidden="true"></i>
-                  </span>
-                </button>
-                <input type="text" value="1" disabled>
-                <button class="btn btn-icon btn-maroon btn-plus">
-                  <span>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="col-md-3">
-                <p class="close-btn">X</p>
-              </div>
-
-              <div class="col-md-6 price">
-                <h6>Price : $187
-                  <span>
-                    <strike>$214</strike>
-                  </span>
-                </h6>
-              </div>
-              <div class="col-md-6 price">
-                <h6>Total : $214
-
-                </h6>
-              </div>
-            </div>
-            <hr>
-            <div class="row items ">
-              <div class="col-md-3 text-center">
-                <img src="assets/images/onion.png" height="140px" width="140px">
-              </div>
-              <div class="col-md-3">
-                <h6>Onions</h6>
-                <div class="sort">
-                  <select>
-                    <option>100gms</option>
-                    <option>200 gms</option>
-                    <option>300 gms</option>
-                    <option>500 gms</option>
-                  </select>
-                </div>
-                <div class="custom-control custom-radio mahali-radio">
-                  <input type="radio" id="customCheck1" name="customRadio1" class="custom-control-input mahali-input">
-                  <label class="custom-control-label mahali-label" for="customCheck1">Use Promocode to get 20% Cashback</label>
-                </div>
-              </div>
-              <div class="col-md-3 text-center">
-                <button class="btn btn-icon btn-maroon btn-minus">
-                  <span>
-                    <i class="fa fa-minus" aria-hidden="true"></i>
-                  </span>
-                </button>
-                <input type="text" value="1" disabled>
-                <button class="btn btn-icon btn-maroon btn-plus">
-                  <span>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="col-md-3">
-                <p class="close-btn">X</p>
-              </div>
-
-              <div class="col-md-6 price">
-                <h6>Price : $187
-                  <span>
-                    <strike>$214</strike>
-                  </span>
-                </h6>
-
-              </div>
-              <div class="col-md-6 price">
-                <h6>Total : $214
-
-                </h6>
-              </div>
-            </div> -->
                     </div>
                     <div class="sub-total">
                         <table class="table table-borderless">
                             <tbody>
-                                <tr>
+                                <tr class="text-right">
 
                                     <td>Sub-Total</td>
-                                    <td> : BD {{billing}}</td>
+                                    <td> : BD.{{billing}}</td>
                                 </tr>
-                                <tr>
+                                <tr class="text-right">
                                     <td>Delivery charges </td>
                                     <td> : ***</td>
                                 </tr>
                             </tbody>
                         </table>
+                        <span class="text-right promo">*Apply Promocode to this order</span><br />
                         <button class="btn btn-maroon" value="Checkout" (click)="checkout()">Checkout</button>
                     </div>
                 </div>
@@ -318,7 +213,7 @@
                                         <span>:</span>
                                     </label>
                                     <div class="col-sm-8 col-md-8 ">
-                                        <input type="text " formControlName="mobile_number" class="form-control"
+                                        <input myNumberOnly type="text " formControlName="mobile_number" class="form-control"
                                             [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
                                         <div *ngIf="submitted && f.mobile_number.errors" class="invalid-feedback">
                                             <div *ngIf="f.mobile_number.errors.required">Mobile Number is required</div>
@@ -387,7 +282,8 @@
                                         <span>:</span>
                                     </label>
                                     <div class="col-sm-8 col-md-8 ">
-                                        <input type="text " formControlName="pin_code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pin_code.errors }">
+                                        <input myNumberOnly type="text " formControlName="pin_code" class="form-control"
+                                            [ngClass]="{ 'is-invalid': submitted && f.pin_code.errors }">
                                         <div *ngIf="submitted && f.pin_code.errors" class="invalid-feedback">
                                             <div *ngIf="f.pin_code.errors.required">Pin code is required</div>
                                         </div>
@@ -504,7 +400,7 @@
                         <div class="col-md-6 ">
                             <h4>Total</h4>
                         </div>
-                        <div class="col-md-6 ">
+                        <div class="col-md-6 prices">
                             <h4>
                                 <span>BD.{{billing}}</span>
                             </h4>
@@ -515,7 +411,7 @@
                         <div class="col-md-6 ">
                             <h4>Total Payable Amount</h4>
                         </div>
-                        <div class="col-md-6 ">
+                        <div class="col-md-6 prices">
                             <h4>
                                 <span>BD.{{billing}}</span>
                             </h4>
@@ -527,24 +423,26 @@
             <!-- payment option -->
             <div class="row justify-content-center">
                 <div class="col-md-9 payment sec">
-                    <h5 class="payment">Select Payment Option</h5>
+                    <p class="">Select Payment Option</p>
 
-                    <div class="row" *ngFor="let pay of payOptions;let i= index">
-                        <div class="col-md-12">
+                    <div class="row options" *ngFor="let pay of payOptions;let i= index">
+                        <div class="col-md-12 payment-cursor">
                             <i class="far fa-circle" (click)="selePayOptn(i,pay.id)" *ngIf="seleOpt!==i"></i>
-                            <i class="far fa-dot-circle" *ngIf="seleOpt==i"></i> &nbsp; &nbsp; {{pay.payment_option}}
+                            <i class="far fa-dot-circle" *ngIf="seleOpt==i" [ngClass]="{'activePay':seleOpt=='i'}"></i>
+                            &nbsp;
+                            &nbsp; {{pay.payment_option}}
                         </div>
                         <hr>
                     </div>
 
                     <!-- <div class="row ">
-							<div class="col-md-12">
-								<div class="custom-control custom-radio mahali-radio">
-									<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input mahali-input" checked>
-									<label class="custom-control-label mahali-label" for="customRadio2">Cash On Delivery</label>
-								</div>
+						<div class="col-md-12">
+							<div class="custom-control custom-radio mahali-radio">
+								<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input mahali-input" checked>
+								<label class="custom-control-label mahali-label" for="customRadio2">Cash On Delivery</label>
 							</div>
-						</div> -->
+						</div>
+					</div> -->
                 </div>
             </div>
             <!-- payment option -->

@@ -248,4 +248,12 @@ export class appService {
         this.user_id = localStorage.userId
         return this.http.put(AppSettings.modifyWish + "/" + this.user_id + '/' + cartId, params, { headers: headers });
     }
+    changePwForgot(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.post(AppSettings.changeForgot, params, { headers: headers });
+    }
+    otpVerify(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.post(AppSettings.otpUrl, params, { headers: headers });
+    }
 }

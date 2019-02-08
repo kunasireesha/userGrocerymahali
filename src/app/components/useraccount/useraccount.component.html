@@ -123,7 +123,7 @@
 					</label>
 					<div class="col-sm-9">
 						<input type="email" class="form-control input-feild" id="inputEmail3" placeholder="tarunkumar321@gmail.com" name="email"
-						 [(ngModel)]="profileData.email" ngControl="passwordCtrl" required>
+						 [(ngModel)]="profileData.email" ngControl="passwordCtrl" ngControl="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -440,7 +440,8 @@
 					</label>
 					<div class="col-sm-10">
 
-						<input type="text" class="form-control input-feild" id="inputNumber" name="mobile_number" [(ngModel)]="editAddData.mobile_number">
+						<input myNumberOnly type="text" class="form-control input-feild" id="inputNumber" name="mobile_number"
+						 [(ngModel)]="editAddData.mobile_number">
 						<!-- <div *ngIf="submitted && f1.mobile_number.errors" class="invalid-feedback">
           <div *ngIf="f1.mobile_number.errors.required">Mobile Number is required</div>
       </div> -->
@@ -500,7 +501,7 @@
 					</label>
 					<div class="col-sm-4">
 
-						<input type="text" class="form-control input-feild" id="inputpincode2" name="pin_code" [(ngModel)]="editAddData.pin_code">
+						<input myNumberOnly type="text" class="form-control input-feild" id="inputpincode2" name="pin_code" [(ngModel)]="editAddData.pin_code">
 						<!-- <div *ngIf="submitted && f1.pin_code.errors" class="invalid-feedback">
           <div *ngIf="f1.pin_code.errors.required">Pin-Code is required</div>
       </div> -->
@@ -767,7 +768,7 @@
 										</tr>
 									</thead>
 									<tbody class="cust-tbody">
-										<tr class="cst-topad" *ngFor="let ord of orders | filter:filter | paginate: { itemsPerPage: 3, currentPage: p };let i =index"
+										<tr class="cst-topad" *ngFor="let ord of orders | orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: 3, currentPage: p };let i =index"
 										 (click)="showBukedOrderDetails(ord.order_id)">
 											<!-- <th scope="row">{{i+1}}</th> -->
 											<td>
